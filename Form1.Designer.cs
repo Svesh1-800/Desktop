@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.menuSideBar = new System.Windows.Forms.MenuStrip();
-            this.сегодняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.завтраToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.всеЗадачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.яУсталToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.всеЗадачиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьЗадачуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьКатегориюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TodayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TomorrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.IAmTiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AllTasksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSideBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,60 +44,59 @@
             this.menuSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuSideBar.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuSideBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сегодняToolStripMenuItem,
-            this.завтраToolStripMenuItem,
-            this.всеЗадачиToolStripMenuItem,
-            this.яУсталToolStripMenuItem,
-            this.всеЗадачиToolStripMenuItem1,
-            this.создатьЗадачуToolStripMenuItem,
-            this.создатьКатегориюToolStripMenuItem});
+            this.TodayToolStripMenuItem,
+            this.TomorrowToolStripMenuItem,
+            this.IAmTiredToolStripMenuItem,
+            this.AllTasksToolStripMenuItem1,
+            this.CreateTaskToolStripMenuItem,
+            this.CreateListToolStripMenuItem});
             this.menuSideBar.Location = new System.Drawing.Point(0, 0);
             this.menuSideBar.Name = "menuSideBar";
             this.menuSideBar.Size = new System.Drawing.Size(197, 450);
             this.menuSideBar.TabIndex = 0;
             this.menuSideBar.Text = "menuSideBar";
             // 
-            // сегодняToolStripMenuItem
+            // TodayToolStripMenuItem
             // 
-            this.сегодняToolStripMenuItem.Name = "сегодняToolStripMenuItem";
-            this.сегодняToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
-            this.сегодняToolStripMenuItem.Text = "Сегодня";
+            this.TodayToolStripMenuItem.Name = "TodayToolStripMenuItem";
+            this.TodayToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.TodayToolStripMenuItem.Text = "Сегодня";
             // 
-            // завтраToolStripMenuItem
+            // TomorrowToolStripMenuItem
             // 
-            this.завтраToolStripMenuItem.Name = "завтраToolStripMenuItem";
-            this.завтраToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
-            this.завтраToolStripMenuItem.Text = "Завтра";
+            this.TomorrowToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.TomorrowToolStripMenuItem.Name = "TomorrowToolStripMenuItem";
+            this.TomorrowToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.TomorrowToolStripMenuItem.Text = "Завтра";
             // 
-            // всеЗадачиToolStripMenuItem
+            // IAmTiredToolStripMenuItem
             // 
-            this.всеЗадачиToolStripMenuItem.Name = "всеЗадачиToolStripMenuItem";
-            this.всеЗадачиToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
-            this.всеЗадачиToolStripMenuItem.Text = "Все задачи";
+            this.IAmTiredToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.IAmTiredToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.IAmTiredToolStripMenuItem.Name = "IAmTiredToolStripMenuItem";
+            this.IAmTiredToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.IAmTiredToolStripMenuItem.Text = "Я устал";
             // 
-            // яУсталToolStripMenuItem
+            // AllTasksToolStripMenuItem1
             // 
-            this.яУсталToolStripMenuItem.Name = "яУсталToolStripMenuItem";
-            this.яУсталToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
-            this.яУсталToolStripMenuItem.Text = "Я устал";
+            this.AllTasksToolStripMenuItem1.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.AllTasksToolStripMenuItem1.Name = "AllTasksToolStripMenuItem1";
+            this.AllTasksToolStripMenuItem1.Size = new System.Drawing.Size(184, 27);
+            this.AllTasksToolStripMenuItem1.Text = "Все задачи";
             // 
-            // всеЗадачиToolStripMenuItem1
+            // CreateTaskToolStripMenuItem
             // 
-            this.всеЗадачиToolStripMenuItem1.Name = "всеЗадачиToolStripMenuItem1";
-            this.всеЗадачиToolStripMenuItem1.Size = new System.Drawing.Size(184, 27);
-            this.всеЗадачиToolStripMenuItem1.Text = "Все задачи";
+            this.CreateTaskToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.CreateTaskToolStripMenuItem.Name = "CreateTaskToolStripMenuItem";
+            this.CreateTaskToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.CreateTaskToolStripMenuItem.Text = "Создать задачу ";
             // 
-            // создатьЗадачуToolStripMenuItem
+            // CreateListToolStripMenuItem
             // 
-            this.создатьЗадачуToolStripMenuItem.Name = "создатьЗадачуToolStripMenuItem";
-            this.создатьЗадачуToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
-            this.создатьЗадачуToolStripMenuItem.Text = "Создать задачу ";
-            // 
-            // создатьКатегориюToolStripMenuItem
-            // 
-            this.создатьКатегориюToolStripMenuItem.Name = "создатьКатегориюToolStripMenuItem";
-            this.создатьКатегориюToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
-            this.создатьКатегориюToolStripMenuItem.Text = "Создать категорию";
+            this.CreateListToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.CreateListToolStripMenuItem.Name = "CreateListToolStripMenuItem";
+            this.CreateListToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.CreateListToolStripMenuItem.Text = "Создать категорию";
             // 
             // FormMain
             // 
@@ -118,13 +116,12 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuSideBar;
-        private System.Windows.Forms.ToolStripMenuItem сегодняToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem завтраToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem всеЗадачиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem яУсталToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem всеЗадачиToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem создатьЗадачуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem создатьКатегориюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TodayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TomorrowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem IAmTiredToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AllTasksToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem CreateTaskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CreateListToolStripMenuItem;
     }
 }
 
