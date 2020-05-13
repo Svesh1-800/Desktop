@@ -1,16 +1,16 @@
 ﻿namespace uCAN
 {
-    partial class FormMain
+    partial class FormCreateTask
     {
         /// <summary>
-        /// Обязательная переменная конструктора.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -36,7 +36,6 @@
             this.CreateTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeadlinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.menuSideBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +56,7 @@
             this.menuSideBar.Name = "menuSideBar";
             this.menuSideBar.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.menuSideBar.Size = new System.Drawing.Size(197, 450);
-            this.menuSideBar.TabIndex = 0;
+            this.menuSideBar.TabIndex = 1;
             this.menuSideBar.Text = "menuSideBar";
             // 
             // TodayToolStripMenuItem
@@ -94,7 +93,6 @@
             this.CreateTaskToolStripMenuItem.Name = "CreateTaskToolStripMenuItem";
             this.CreateTaskToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
             this.CreateTaskToolStripMenuItem.Text = "Создать задачу ";
-            this.CreateTaskToolStripMenuItem.Click += new System.EventHandler(this.CreateTaskToolStripMenuItem_Click);
             // 
             // CreateListToolStripMenuItem
             // 
@@ -102,7 +100,6 @@
             this.CreateListToolStripMenuItem.Name = "CreateListToolStripMenuItem";
             this.CreateListToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
             this.CreateListToolStripMenuItem.Text = "Создать категорию";
-            this.CreateListToolStripMenuItem.Click += new System.EventHandler(this.CreateListToolStripMenuItem_Click);
             // 
             // DeadlinesToolStripMenuItem
             // 
@@ -112,23 +109,14 @@
             this.DeadlinesToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
             this.DeadlinesToolStripMenuItem.Text = "DEADLINES";
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(197, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(604, 450);
-            this.panel1.TabIndex = 1;
-            // 
-            // FormMain
+            // FormCreateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuSideBar);
-            this.Name = "FormMain";
-            this.Text = "UCAN";
+            this.Name = "FormCreateTask";
+            this.Text = "FormCreateTask";
             this.menuSideBar.ResumeLayout(false);
             this.menuSideBar.PerformLayout();
             this.ResumeLayout(false);
@@ -145,8 +133,6 @@
         private System.Windows.Forms.ToolStripMenuItem AllTasksToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem CreateTaskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CreateListToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem DeadlinesToolStripMenuItem;
     }
 }
-
