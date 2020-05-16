@@ -19,12 +19,19 @@ namespace uCAN
         MonthCalendar today;
         DateTimePicker dateTimePickerSetDeadline;
         CheckedListBox checkedListBoxTodayTasks;
+        
+        
 
         public FormMain()
         {
             InitializeComponent();
+            EventArgs e = new EventArgs();
+            object sender = new object();
+            TodayToolStripMenuItem_Click(sender, e);
 
         }
+      
+        
         
         
         private void CreateTaskToolStripMenuItem_Click(object sender, EventArgs e)
@@ -93,7 +100,7 @@ namespace uCAN
             file.Close();
             MessageBox.Show("Готово");
         }
-        private void ButtonOnClick(object sender, EventArgs eventArgs)
+        public void ButtonOnClick(object sender, EventArgs eventArgs)
         {
             if (textBoxInput.Text == "")
             {
