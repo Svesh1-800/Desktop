@@ -65,6 +65,7 @@
             this.TodayToolStripMenuItem.Name = "TodayToolStripMenuItem";
             this.TodayToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
             this.TodayToolStripMenuItem.Text = "Сегодня";
+            this.TodayToolStripMenuItem.Click += new System.EventHandler(this.TodayToolStripMenuItem_Click);
             // 
             // TomorrowToolStripMenuItem
             // 
@@ -72,6 +73,7 @@
             this.TomorrowToolStripMenuItem.Name = "TomorrowToolStripMenuItem";
             this.TomorrowToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
             this.TomorrowToolStripMenuItem.Text = "Завтра";
+            this.TomorrowToolStripMenuItem.Click += new System.EventHandler(this.TomorrowToolStripMenuItem_Click);
             // 
             // IAmTiredToolStripMenuItem
             // 
@@ -80,6 +82,7 @@
             this.IAmTiredToolStripMenuItem.Name = "IAmTiredToolStripMenuItem";
             this.IAmTiredToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
             this.IAmTiredToolStripMenuItem.Text = "Я устал";
+            this.IAmTiredToolStripMenuItem.Click += new System.EventHandler(this.IAmTiredToolStripMenuItem_Click);
             // 
             // AllTasksToolStripMenuItem1
             // 
@@ -87,6 +90,7 @@
             this.AllTasksToolStripMenuItem1.Name = "AllTasksToolStripMenuItem1";
             this.AllTasksToolStripMenuItem1.Size = new System.Drawing.Size(184, 27);
             this.AllTasksToolStripMenuItem1.Text = "Все задачи";
+            this.AllTasksToolStripMenuItem1.Click += new System.EventHandler(this.AllTasksToolStripMenuItem1_Click);
             // 
             // CreateTaskToolStripMenuItem
             // 
