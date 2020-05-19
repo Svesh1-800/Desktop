@@ -19,21 +19,34 @@ namespace uCAN
         MonthCalendar today;
         DateTimePicker dateTimePickerSetDeadline;
         CheckedListBox checkedListBoxTodayTasks;
+        List<string> temp = new List<string>();
         
         
 
         public FormMain()
         {
             InitializeComponent();
+            CreateTemp(temp);
             EventArgs e = new EventArgs();
             object sender = new object();
             TodayToolStripMenuItem_Click(sender, e);
 
         }
-      
-        
-        
-        
+        static void CreateTemp(List<string> temp)
+        {
+
+            StreamReader file = new StreamReader("goals.txt");
+            while (!file.EndOfStream)
+            {
+                string oneTask = file.ReadLine();
+                temp.Add(oneTask);
+            }
+            file.Close();
+            
+
+        }
+
+
         private void CreateTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -80,10 +93,7 @@ namespace uCAN
             panel1.Controls.Add(labelInputDate);
             panel1.Controls.Add(dateTimePickerSetDeadline);
             panel1.Controls.Add(buttonApplyNew);
-            
-            
-
-            
+             
         }
 
         
@@ -93,11 +103,9 @@ namespace uCAN
             
         }
        
-        static void CreateNote(string vvod,string date)
-        { 
-            StreamWriter file = new StreamWriter("goals.txt", true);
-            file.WriteLine(vvod + " .Дедлайн - " +date );
-            file.Close();
+        static void CreateNote(string vvod,string date,List<string> temp)
+        {
+            temp.Add(vvod + " .Дедлайн - " + date);
             MessageBox.Show("Готово");
         }
         public void ButtonOnClick(object sender, EventArgs eventArgs)
@@ -108,7 +116,7 @@ namespace uCAN
             }
             else
             {
-                CreateNote(textBoxInput.Text, dateTimePickerSetDeadline.Value.ToShortDateString().ToString());
+                CreateNote(textBoxInput.Text, dateTimePickerSetDeadline.Value.ToShortDateString().ToString(),temp);
                 textBoxInput.Clear();
                 
             }
@@ -118,48 +126,77 @@ namespace uCAN
         {
             panel1.Controls.Clear();
             checkedListBoxTodayTasks = new CheckedListBox();
+            
             Font fn = new Font("Georgia", 12);
             checkedListBoxTodayTasks.Font = fn;
             checkedListBoxTodayTasks.Width = 800;
             checkedListBoxTodayTasks.Height = 800;
-            StreamReader file = new StreamReader("goals.txt");
             today = new MonthCalendar();
-            while (!file.EndOfStream)
+            panel1.Controls.Add(checkedListBoxTodayTasks);
+            int x = 0;
+            foreach (string note in temp)
             {
-                string note = file.ReadLine();
                 string[] oneTask = note.Split();
                 int cnt = oneTask.Length;
                 int cntNote = note.Length;
-                string thatDay = oneTask[cnt-1];
-                if(thatDay == today.TodayDate.ToShortDateString())
+                string thatDay = oneTask[cnt - 1];
+                if (thatDay == today.TodayDate.ToShortDateString())
                 {
-                    checkedListBoxTodayTasks.Items.Add(note.Remove(cntNote-21));
+                    checkedListBoxTodayTasks.Items.Add(note);
+                    
+                    checkedListBoxTodayTasks.SetItemChecked(x,true);
+                    
+                    x++;
                 }
-                
-            }
-            file.Close();
+
+            } 
+            
             panel1.Controls.Add(checkedListBoxTodayTasks);
+            
+
+            checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
+
+            
+
 
         }
+
+        private void CheckedListBoxTodayTasks_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            foreach (string s in checkedListBoxTodayTasks.CheckedItems)
+            {
+                temp.Remove(s);
+                MessageBox.Show("Поздравляем с выполнением задачи!");
+                
+            }
+        }
+
+        
+
+        
 
         private void AllTasksToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
             checkedListBoxTodayTasks = new CheckedListBox();
+            checkedListBoxTodayTasks.CheckOnClick = true;
             Font fn = new Font("Georgia", 12);
             checkedListBoxTodayTasks.Font = fn;
             checkedListBoxTodayTasks.Width = 800;
+
             checkedListBoxTodayTasks.Height = 800;
-
-
-            StreamReader file = new StreamReader("goals.txt");
-            while (!file.EndOfStream)
+            int x = 0;
+            foreach(string s in temp)
             {
-                string oneTask = file.ReadLine();
-                checkedListBoxTodayTasks.Items.Add(oneTask);
+                
+                checkedListBoxTodayTasks.Items.Add(s);
+                checkedListBoxTodayTasks.SetItemChecked(x, true);
+                x++;
             }
-            file.Close();
+           
             panel1.Controls.Add(checkedListBoxTodayTasks);
+            checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
+            
         }
 
         private void TomorrowToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,11 +207,10 @@ namespace uCAN
             checkedListBoxTodayTasks.Font = fn;
             checkedListBoxTodayTasks.Width = 800;
             checkedListBoxTodayTasks.Height = 800;
-            StreamReader file = new StreamReader("goals.txt");
             today = new MonthCalendar();
-            while (!file.EndOfStream)
-            {
-                string note = file.ReadLine();
+            int x = 0;
+            foreach(string note in temp)
+            { 
                 string[] oneTask = note.Split();
                 int cnt = oneTask.Length;
                 int cntNote = note.Length;
@@ -182,16 +218,28 @@ namespace uCAN
                 if (thatDay == today.TodayDate.AddDays(1).ToShortDateString())
                 {
                     checkedListBoxTodayTasks.Items.Add(note.Remove(cntNote - 21));
+                    checkedListBoxTodayTasks.SetItemChecked(x, true);
+                    x++;
                 }
-
             }
-            file.Close();
+   
             panel1.Controls.Add(checkedListBoxTodayTasks);
+            checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
         }
 
         private void IAmTiredToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("«Но когда у тебя что-то не получается , ты начинаешь искать виноватых. Например, мою тень. Я скажу тебе то, что ты и так знаешь. Мир не такой уж солнечный и приветливый. Это суровое и опасное место. И не важно, насколько сильным ты считаешь себя, он все равно поставит тебя на колени и будет удерживать, если ты ему это позволишь Дело не в том, как сильно ты бьешь, а в том, как долго сможешь держать удары и двигаться вперед.Только так побеждают Если знаешь, чего ты стоишь, иди и возьми свое.Но будь готов принимать удары, а не говорить, что у меня не получилось из - за него, из - за нее или кого - то еще.Так делают только трусы.Но ты не трус.Быть этого не может—  Артур Дзадзаев");
+        }
+
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            StreamWriter file = new StreamWriter("goals.txt");
+            foreach(string note in temp)
+            {
+                file.WriteLine(note);
+            }
+            file.Close();
         }
     }
     

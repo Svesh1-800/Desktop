@@ -133,6 +133,7 @@
             this.Controls.Add(this.menuSideBar);
             this.Name = "FormMain";
             this.Text = "UCAN";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.menuSideBar.ResumeLayout(false);
             this.menuSideBar.PerformLayout();
             this.ResumeLayout(false);
