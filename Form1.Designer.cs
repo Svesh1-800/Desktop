@@ -115,6 +115,7 @@
             this.DeadlinesToolStripMenuItem.Name = "DeadlinesToolStripMenuItem";
             this.DeadlinesToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
             this.DeadlinesToolStripMenuItem.Text = "DEADLINES";
+            this.DeadlinesToolStripMenuItem.Click += new System.EventHandler(this.DeadlinesToolStripMenuItem_Click);
             // 
             // panel1
             // 

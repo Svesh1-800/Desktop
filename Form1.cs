@@ -100,6 +100,7 @@ namespace uCAN
         private void CreateListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
+            MessageBox.Show("Ведутся работы. Я пока что не понимаю, как это реализовать");
             
         }
        
@@ -124,6 +125,7 @@ namespace uCAN
      
         private void TodayToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             panel1.Controls.Clear();
             checkedListBoxTodayTasks = new CheckedListBox();
             
@@ -137,14 +139,12 @@ namespace uCAN
             foreach (string note in temp)
             {
                 string[] oneTask = note.Split();
-                int cnt = oneTask.Length;
-                int cntNote = note.Length;
-                string thatDay = oneTask[cnt - 1];
+                string thatDay = oneTask[oneTask.Length - 1];
                 if (thatDay == today.TodayDate.ToShortDateString())
                 {
                     checkedListBoxTodayTasks.Items.Add(note);
-                    
-                    checkedListBoxTodayTasks.SetItemChecked(x,true);
+
+                    checkedListBoxTodayTasks.SetItemChecked(x, false);
                     
                     x++;
                 }
@@ -190,7 +190,7 @@ namespace uCAN
             {
                 
                 checkedListBoxTodayTasks.Items.Add(s);
-                checkedListBoxTodayTasks.SetItemChecked(x, true);
+                checkedListBoxTodayTasks.SetItemChecked(x, false);
                 x++;
             }
            
@@ -210,15 +210,13 @@ namespace uCAN
             today = new MonthCalendar();
             int x = 0;
             foreach(string note in temp)
-            { 
+            {
                 string[] oneTask = note.Split();
-                int cnt = oneTask.Length;
-                int cntNote = note.Length;
-                string thatDay = oneTask[cnt - 1];
+                string thatDay = oneTask[oneTask.Length - 1];
                 if (thatDay == today.TodayDate.AddDays(1).ToShortDateString())
                 {
-                    checkedListBoxTodayTasks.Items.Add(note.Remove(cntNote - 21));
-                    checkedListBoxTodayTasks.SetItemChecked(x, true);
+                    checkedListBoxTodayTasks.Items.Add(note);
+                    checkedListBoxTodayTasks.SetItemChecked(x, false);
                     x++;
                 }
             }
@@ -240,6 +238,38 @@ namespace uCAN
                 file.WriteLine(note);
             }
             file.Close();
+        }
+
+        private void DeadlinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RichTextBox f = new RichTextBox();
+            f.Height = 600;
+            f.Width = 600;
+            Font fn = new Font("Georgia", 11);
+            f.Font = fn;
+            f.ReadOnly = true;
+            panel1.Controls.Clear();
+            foreach(string s in temp)
+            {
+                
+                string[] ss = s.Split();
+                string  numbers = ss[ss.Length - 1];
+                
+                string[] date = numbers.Split('.');
+                int day = Convert.ToInt32(date[0]);
+                int month = Convert.ToInt32(date[1]);
+                int year = Convert.ToInt32(date[2]);
+                DateTime finishDate = new DateTime(year,month,day);
+                TimeSpan left = finishDate.Subtract(DateTime.Now);
+                double daysLeft = left.TotalDays;
+                Label labl1 = new Label();
+                labl1.Height = 100;
+                labl1.Width = 200;
+                f.Text += s.Remove(s.Length-21) + ". Осталось - " + (daysLeft+1).ToString("0")+ " day(-s)" + Environment.NewLine;
+                panel1.Controls.Add(f);
+
+            }
+           
         }
     }
     
