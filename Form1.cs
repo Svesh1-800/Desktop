@@ -265,7 +265,14 @@ namespace uCAN
                 Label labl1 = new Label();
                 labl1.Height = 100;
                 labl1.Width = 200;
-                f.Text += s.Remove(s.Length-21) + ". Осталось - " + (daysLeft+1).ToString("0")+ " day(-s)" + Environment.NewLine;
+                if(daysLeft+1>=0)
+                {
+                    f.Text += s.Remove(s.Length - 21) + ". Осталось - " + (daysLeft + 1).ToString("0") + " day(-s)" + Environment.NewLine;
+                }
+                else
+                {
+                    f.Text += s.Remove(s.Length - 21) + ". Просрочена на " + (-1*(daysLeft + 1)).ToString("0") + " day(-s)" + Environment.NewLine;
+                }
                 panel1.Controls.Add(f);
 
             }
