@@ -42,6 +42,17 @@
             this.menuSideBar.SuspendLayout();
             this.SuspendLayout();
             // 
+            // label2
+            // 
+            label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            label2.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            label2.Location = new System.Drawing.Point(34, 20);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(28, 34);
+            label2.TabIndex = 3;
+            label2.Text = "U";
+            // 
             // menuSideBar
             // 
             this.menuSideBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -115,7 +126,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.Location = new System.Drawing.Point(168, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -133,18 +144,6 @@
             this.label1.Size = new System.Drawing.Size(81, 48);
             this.label1.TabIndex = 2;
             this.label1.Text = "CAN";
-            // 
-            // label2
-            // 
-            label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            label2.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            label2.Location = new System.Drawing.Point(34, 20);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(28, 34);
-            label2.TabIndex = 3;
-            label2.Text = "U";
-            
             // 
             // FormMain
             // 

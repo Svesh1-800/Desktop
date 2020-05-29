@@ -16,7 +16,6 @@ namespace uCAN
     {
         Button buttonApplyNew;
         TextBox textBoxInput;
-        MonthCalendar today;
         DateTimePicker dateTimePickerSetDeadline;
         CheckedListBox checkedListBoxTodayTasks;
         List<string> temp = new List<string>();
@@ -44,6 +43,32 @@ namespace uCAN
             file.Close();
             
 
+        }
+
+        public void TodayAndTomorrow(int plus)
+        {
+            panel1.Controls.Clear();
+            checkedListBoxTodayTasks = new CheckedListBox();
+
+            Font fn = new Font("Georgia", 12);
+            checkedListBoxTodayTasks.Font = fn;
+            checkedListBoxTodayTasks.Width = 800;
+            checkedListBoxTodayTasks.Height = 800;
+            panel1.Controls.Add(checkedListBoxTodayTasks);
+            
+            foreach (string note in temp)
+            {
+                string[] oneTask = note.Split();
+                string thatDay = oneTask[oneTask.Length - 1];
+                if (thatDay == DateTime.Now.AddDays(plus).ToShortDateString())
+                {
+                    
+                    checkedListBoxTodayTasks.Items.Add(note.Remove(note.Length-21));
+                }
+
+            }
+
+            panel1.Controls.Add(checkedListBoxTodayTasks);
         }
 
 
@@ -76,8 +101,7 @@ namespace uCAN
             dateTimePickerSetDeadline = new DateTimePicker();
             dateTimePickerSetDeadline.Left = 200;
             dateTimePickerSetDeadline.Top = 160;
-            today = new MonthCalendar();
-            dateTimePickerSetDeadline.MinDate = today.TodayDate;
+            dateTimePickerSetDeadline.MinDate = DateTime.Now;
 
             buttonApplyNew = new Button();
             buttonApplyNew.Height = 50;
@@ -117,40 +141,8 @@ namespace uCAN
      
         private void TodayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            panel1.Controls.Clear();
-            checkedListBoxTodayTasks = new CheckedListBox();
-            
-            Font fn = new Font("Georgia", 12);
-            checkedListBoxTodayTasks.Font = fn;
-            checkedListBoxTodayTasks.Width = 800;
-            checkedListBoxTodayTasks.Height = 800;
-            today = new MonthCalendar();
-            panel1.Controls.Add(checkedListBoxTodayTasks);
-            int x = 0;
-            foreach (string note in temp)
-            {
-                string[] oneTask = note.Split();
-                string thatDay = oneTask[oneTask.Length - 1];
-                if (thatDay == today.TodayDate.ToShortDateString())
-                {
-                    checkedListBoxTodayTasks.Items.Add(note);
-
-                    checkedListBoxTodayTasks.SetItemChecked(x, false);
-                    
-                    x++;
-                }
-
-            } 
-            
-            panel1.Controls.Add(checkedListBoxTodayTasks);
-            
-
+            TodayAndTomorrow(0);
             checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
-
-            
-
-
         }
 
         private void CheckedListBoxTodayTasks_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -168,10 +160,7 @@ namespace uCAN
             
         }
 
-        
 
-        
-        //ыыы
         private void AllTasksToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -197,27 +186,7 @@ namespace uCAN
 
         private void TomorrowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
-            checkedListBoxTodayTasks = new CheckedListBox();
-            Font fn = new Font("Georgia", 12);
-            checkedListBoxTodayTasks.Font = fn;
-            checkedListBoxTodayTasks.Width = 800;
-            checkedListBoxTodayTasks.Height = 800;
-            today = new MonthCalendar();
-            int x = 0;
-            foreach(string note in temp)
-            {
-                string[] oneTask = note.Split();
-                string thatDay = oneTask[oneTask.Length - 1];
-                if (thatDay == today.TodayDate.AddDays(1).ToShortDateString())
-                {
-                    checkedListBoxTodayTasks.Items.Add(note);
-                    checkedListBoxTodayTasks.SetItemChecked(x, false);
-                    x++;
-                }
-            }
-   
-            panel1.Controls.Add(checkedListBoxTodayTasks);
+            TodayAndTomorrow(1);
             checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
 
         }
