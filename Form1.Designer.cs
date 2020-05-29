@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Label label2;
             this.menuSideBar = new System.Windows.Forms.MenuStrip();
             this.TodayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TomorrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IAmTiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AllTasksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CreateListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeadlinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
             this.menuSideBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,19 +53,19 @@
             this.IAmTiredToolStripMenuItem,
             this.AllTasksToolStripMenuItem1,
             this.CreateTaskToolStripMenuItem,
-            this.CreateListToolStripMenuItem,
             this.DeadlinesToolStripMenuItem});
             this.menuSideBar.Location = new System.Drawing.Point(0, 0);
             this.menuSideBar.Name = "menuSideBar";
             this.menuSideBar.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.menuSideBar.Size = new System.Drawing.Size(197, 450);
+            this.menuSideBar.Size = new System.Drawing.Size(168, 450);
             this.menuSideBar.TabIndex = 0;
             this.menuSideBar.Text = "menuSideBar";
             // 
             // TodayToolStripMenuItem
             // 
+            this.TodayToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 80, 0, 0);
             this.TodayToolStripMenuItem.Name = "TodayToolStripMenuItem";
-            this.TodayToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.TodayToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
             this.TodayToolStripMenuItem.Text = "Сегодня";
             this.TodayToolStripMenuItem.Click += new System.EventHandler(this.TodayToolStripMenuItem_Click);
             // 
@@ -71,7 +73,7 @@
             // 
             this.TomorrowToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.TomorrowToolStripMenuItem.Name = "TomorrowToolStripMenuItem";
-            this.TomorrowToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.TomorrowToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
             this.TomorrowToolStripMenuItem.Text = "Завтра";
             this.TomorrowToolStripMenuItem.Click += new System.EventHandler(this.TomorrowToolStripMenuItem_Click);
             // 
@@ -80,7 +82,7 @@
             this.IAmTiredToolStripMenuItem.ForeColor = System.Drawing.Color.Maroon;
             this.IAmTiredToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.IAmTiredToolStripMenuItem.Name = "IAmTiredToolStripMenuItem";
-            this.IAmTiredToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.IAmTiredToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
             this.IAmTiredToolStripMenuItem.Text = "Я устал";
             this.IAmTiredToolStripMenuItem.Click += new System.EventHandler(this.IAmTiredToolStripMenuItem_Click);
             // 
@@ -88,7 +90,7 @@
             // 
             this.AllTasksToolStripMenuItem1.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.AllTasksToolStripMenuItem1.Name = "AllTasksToolStripMenuItem1";
-            this.AllTasksToolStripMenuItem1.Size = new System.Drawing.Size(184, 27);
+            this.AllTasksToolStripMenuItem1.Size = new System.Drawing.Size(155, 27);
             this.AllTasksToolStripMenuItem1.Text = "Все задачи";
             this.AllTasksToolStripMenuItem1.Click += new System.EventHandler(this.AllTasksToolStripMenuItem1_Click);
             // 
@@ -96,42 +98,64 @@
             // 
             this.CreateTaskToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.CreateTaskToolStripMenuItem.Name = "CreateTaskToolStripMenuItem";
-            this.CreateTaskToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.CreateTaskToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
             this.CreateTaskToolStripMenuItem.Text = "Создать задачу ";
             this.CreateTaskToolStripMenuItem.Click += new System.EventHandler(this.CreateTaskToolStripMenuItem_Click);
-            // 
-            // CreateListToolStripMenuItem
-            // 
-            this.CreateListToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.CreateListToolStripMenuItem.Name = "CreateListToolStripMenuItem";
-            this.CreateListToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
-            this.CreateListToolStripMenuItem.Text = "Создать категорию";
-            this.CreateListToolStripMenuItem.Click += new System.EventHandler(this.CreateListToolStripMenuItem_Click);
             // 
             // DeadlinesToolStripMenuItem
             // 
             this.DeadlinesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.DeadlinesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.DeadlinesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.DeadlinesToolStripMenuItem.Name = "DeadlinesToolStripMenuItem";
-            this.DeadlinesToolStripMenuItem.Size = new System.Drawing.Size(184, 27);
+            this.DeadlinesToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
             this.DeadlinesToolStripMenuItem.Text = "DEADLINES";
             this.DeadlinesToolStripMenuItem.Click += new System.EventHandler(this.DeadlinesToolStripMenuItem_Click);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(197, 0);
+            this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel1.Location = new System.Drawing.Point(168, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(604, 450);
+            this.panel1.Size = new System.Drawing.Size(0, 0);
             this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(55, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 48);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "CAN";
+            // 
+            // label2
+            // 
+            label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            label2.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            label2.Location = new System.Drawing.Point(34, 20);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(28, 34);
+            label2.TabIndex = 3;
+            label2.Text = "U";
+            
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuSideBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormMain";
             this.Text = "UCAN";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
@@ -150,9 +174,9 @@
         private System.Windows.Forms.ToolStripMenuItem IAmTiredToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AllTasksToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem CreateTaskToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem CreateListToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem DeadlinesToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }
 

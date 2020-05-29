@@ -96,14 +96,6 @@ namespace uCAN
              
         }
 
-        
-        private void CreateListToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear();
-            MessageBox.Show("Ведутся работы. Я пока что не понимаю, как это реализовать");
-            
-        }
-       
         static void CreateNote(string vvod,string date,List<string> temp)
         {
             temp.Add(vvod + " .Дедлайн - " + date);
@@ -163,18 +155,23 @@ namespace uCAN
 
         private void CheckedListBoxTodayTasks_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            foreach (string s in checkedListBoxTodayTasks.CheckedItems)
+            try
             {
-                temp.Remove(s);
-                MessageBox.Show("Поздравляем с выполнением задачи!");
-                
+                MessageBox.Show(e.Index.ToString());
+                temp.RemoveAt(e.Index);
+                checkedListBoxTodayTasks.Items.RemoveAt(e.Index);
             }
+            catch
+            {
+
+            }
+            
         }
 
         
 
         
-
+        //ыыы
         private void AllTasksToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -183,7 +180,6 @@ namespace uCAN
             Font fn = new Font("Georgia", 12);
             checkedListBoxTodayTasks.Font = fn;
             checkedListBoxTodayTasks.Width = 800;
-
             checkedListBoxTodayTasks.Height = 800;
             int x = 0;
             foreach(string s in temp)
@@ -223,6 +219,7 @@ namespace uCAN
    
             panel1.Controls.Add(checkedListBoxTodayTasks);
             checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
+
         }
 
         private void IAmTiredToolStripMenuItem_Click(object sender, EventArgs e)
@@ -245,7 +242,7 @@ namespace uCAN
             RichTextBox f = new RichTextBox();
             f.Height = 600;
             f.Width = 600;
-            Font fn = new Font("Georgia", 11);
+            Font fn = new Font("Georgia", 12);
             f.Font = fn;
             f.ReadOnly = true;
             panel1.Controls.Clear();
@@ -271,13 +268,15 @@ namespace uCAN
                 }
                 else
                 {
-                    f.Text += s.Remove(s.Length - 21) + ". Просрочена на " + (-1*(daysLeft + 1)).ToString("0") + " day(-s)" + Environment.NewLine;
+                    f.Text += s.Remove(s.Length - 21) + ". Просрочено на " + (-1*(daysLeft + 1)).ToString("0") + " day(-s)" + Environment.NewLine;
                 }
                 panel1.Controls.Add(f);
 
             }
            
         }
+
+       
     }
     
 }
