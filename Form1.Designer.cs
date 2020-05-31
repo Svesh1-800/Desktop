@@ -36,8 +36,9 @@
             this.AllTasksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeadlinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonRemoveTask = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             this.menuSideBar.SuspendLayout();
             this.SuspendLayout();
@@ -67,8 +68,8 @@
             this.DeadlinesToolStripMenuItem});
             this.menuSideBar.Location = new System.Drawing.Point(0, 0);
             this.menuSideBar.Name = "menuSideBar";
-            this.menuSideBar.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
-            this.menuSideBar.Size = new System.Drawing.Size(168, 450);
+            this.menuSideBar.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.menuSideBar.Size = new System.Drawing.Size(171, 450);
             this.menuSideBar.TabIndex = 0;
             this.menuSideBar.Text = "menuSideBar";
             // 
@@ -76,7 +77,7 @@
             // 
             this.TodayToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 80, 0, 0);
             this.TodayToolStripMenuItem.Name = "TodayToolStripMenuItem";
-            this.TodayToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
+            this.TodayToolStripMenuItem.Size = new System.Drawing.Size(152, 27);
             this.TodayToolStripMenuItem.Text = "Сегодня";
             this.TodayToolStripMenuItem.Click += new System.EventHandler(this.TodayToolStripMenuItem_Click);
             // 
@@ -84,7 +85,7 @@
             // 
             this.TomorrowToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.TomorrowToolStripMenuItem.Name = "TomorrowToolStripMenuItem";
-            this.TomorrowToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
+            this.TomorrowToolStripMenuItem.Size = new System.Drawing.Size(152, 27);
             this.TomorrowToolStripMenuItem.Text = "Завтра";
             this.TomorrowToolStripMenuItem.Click += new System.EventHandler(this.TomorrowToolStripMenuItem_Click);
             // 
@@ -93,7 +94,7 @@
             this.IAmTiredToolStripMenuItem.ForeColor = System.Drawing.Color.Maroon;
             this.IAmTiredToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.IAmTiredToolStripMenuItem.Name = "IAmTiredToolStripMenuItem";
-            this.IAmTiredToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
+            this.IAmTiredToolStripMenuItem.Size = new System.Drawing.Size(152, 27);
             this.IAmTiredToolStripMenuItem.Text = "Я устал";
             this.IAmTiredToolStripMenuItem.Click += new System.EventHandler(this.IAmTiredToolStripMenuItem_Click);
             // 
@@ -101,7 +102,7 @@
             // 
             this.AllTasksToolStripMenuItem1.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.AllTasksToolStripMenuItem1.Name = "AllTasksToolStripMenuItem1";
-            this.AllTasksToolStripMenuItem1.Size = new System.Drawing.Size(155, 27);
+            this.AllTasksToolStripMenuItem1.Size = new System.Drawing.Size(152, 27);
             this.AllTasksToolStripMenuItem1.Text = "Все задачи";
             this.AllTasksToolStripMenuItem1.Click += new System.EventHandler(this.AllTasksToolStripMenuItem1_Click);
             // 
@@ -109,7 +110,7 @@
             // 
             this.CreateTaskToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.CreateTaskToolStripMenuItem.Name = "CreateTaskToolStripMenuItem";
-            this.CreateTaskToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
+            this.CreateTaskToolStripMenuItem.Size = new System.Drawing.Size(152, 27);
             this.CreateTaskToolStripMenuItem.Text = "Создать задачу ";
             this.CreateTaskToolStripMenuItem.Click += new System.EventHandler(this.CreateTaskToolStripMenuItem_Click);
             // 
@@ -118,21 +119,9 @@
             this.DeadlinesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.DeadlinesToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.DeadlinesToolStripMenuItem.Name = "DeadlinesToolStripMenuItem";
-            this.DeadlinesToolStripMenuItem.Size = new System.Drawing.Size(155, 27);
+            this.DeadlinesToolStripMenuItem.Size = new System.Drawing.Size(152, 27);
             this.DeadlinesToolStripMenuItem.Text = "DEADLINES";
             this.DeadlinesToolStripMenuItem.Click += new System.EventHandler(this.DeadlinesToolStripMenuItem_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel1.Location = new System.Drawing.Point(168, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(0, 0);
-            this.panel1.TabIndex = 1;
             // 
             // label1
             // 
@@ -145,14 +134,39 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "CAN";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Location = new System.Drawing.Point(171, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(631, 386);
+            this.panel1.TabIndex = 4;
+            // 
+            // buttonRemoveTask
+            // 
+            this.buttonRemoveTask.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonRemoveTask.Enabled = false;
+            this.buttonRemoveTask.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRemoveTask.Location = new System.Drawing.Point(174, 401);
+            this.buttonRemoveTask.Name = "buttonRemoveTask";
+            this.buttonRemoveTask.Size = new System.Drawing.Size(163, 28);
+            this.buttonRemoveTask.TabIndex = 5;
+            this.buttonRemoveTask.Text = "Завершить задачу";
+            this.buttonRemoveTask.UseVisualStyleBackColor = false;
+            this.buttonRemoveTask.Click += new System.EventHandler(this.buttonRemoveTask_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonRemoveTask);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuSideBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormMain";
@@ -173,9 +187,10 @@
         private System.Windows.Forms.ToolStripMenuItem IAmTiredToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AllTasksToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem CreateTaskToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem DeadlinesToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonRemoveTask;
     }
 }
 

@@ -14,16 +14,14 @@ namespace uCAN
     
     public partial class FormMain : Form
     {
-        Button buttonApplyNew;
+        
         TextBox textBoxInput;
         DateTimePicker dateTimePickerSetDeadline;
-        CheckedListBox checkedListBoxTodayTasks;
+        ListBox listBoxTasks;
         List<string> temp = new List<string>();
-        
-        
 
         public FormMain()
-        {
+        { 
             InitializeComponent();
             CreateTemp(temp);
             EventArgs e = new EventArgs();
@@ -45,35 +43,47 @@ namespace uCAN
 
         }
 
-        public void TodayAndTomorrow(int plus)
+        public void TodayAndTomorrowAndAll(int plus)
         {
-            panel1.Controls.Clear();
-            checkedListBoxTodayTasks = new CheckedListBox();
-
-            Font fn = new Font("Georgia", 12);
-            checkedListBoxTodayTasks.Font = fn;
-            checkedListBoxTodayTasks.Width = 800;
-            checkedListBoxTodayTasks.Height = 800;
-            panel1.Controls.Add(checkedListBoxTodayTasks);
             
-            foreach (string note in temp)
+            buttonRemoveTask.Visible = true;
+            buttonRemoveTask.Enabled = false;
+            panel1.Controls.Clear();
+            listBoxTasks = new ListBox();
+            Font fn = new Font("Georgia", 12);
+            listBoxTasks.Height = 386;
+            listBoxTasks.Width = 629;
+            listBoxTasks.Font = fn;
+            if (plus != -1)
             {
-                string[] oneTask = note.Split();
-                string thatDay = oneTask[oneTask.Length - 1];
-                if (thatDay == DateTime.Now.AddDays(plus).ToShortDateString())
+                foreach (string note in temp)
                 {
-                    
-                    checkedListBoxTodayTasks.Items.Add(note.Remove(note.Length-21));
+                    string[] oneTask = note.Split();
+                    string thatDay = oneTask[oneTask.Length - 1];
+                    if (thatDay == DateTime.Now.AddDays(plus).ToShortDateString())
+                    {
+
+                        listBoxTasks.Items.Add(("- " + note.Remove(note.Length - 21)));
+                    }
+
                 }
-
             }
-
-            panel1.Controls.Add(checkedListBoxTodayTasks);
+            else
+            {
+                foreach (string note in temp)
+                {
+                    listBoxTasks.Items.Add(("- " + note.Remove(note.Length - 21)));
+                }
+            }
+            
+            panel1.Controls.Add(listBoxTasks);
+            
         }
 
 
         private void CreateTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            buttonRemoveTask.Visible = false;
             panel1.Controls.Clear();
             textBoxInput = new TextBox();
 
@@ -103,13 +113,14 @@ namespace uCAN
             dateTimePickerSetDeadline.Top = 160;
             dateTimePickerSetDeadline.MinDate = DateTime.Now;
 
-            buttonApplyNew = new Button();
+            Button buttonApplyNew = new Button();
             buttonApplyNew.Height = 50;
             buttonApplyNew.Width = 90;
             buttonApplyNew.Left = 100;
             buttonApplyNew.Top = 190;
             buttonApplyNew.Text = "Подтвердить";
             buttonApplyNew.Click += ButtonOnClick;
+            textBoxInput.KeyDown += TextBoxInput_KeyDown;
 
 
             panel1.Controls.Add(labelInputText);
@@ -118,6 +129,14 @@ namespace uCAN
             panel1.Controls.Add(dateTimePickerSetDeadline);
             panel1.Controls.Add(buttonApplyNew);
              
+        }
+
+        private void TextBoxInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButtonOnClick(sender, e);
+            }
         }
 
         static void CreateNote(string vvod,string date,List<string> temp)
@@ -141,53 +160,32 @@ namespace uCAN
      
         private void TodayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TodayAndTomorrow(0);
-            checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
+            TodayAndTomorrowAndAll(0);
+            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
+            
+
         }
 
-        private void CheckedListBoxTodayTasks_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void ListBoxTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                MessageBox.Show(e.Index.ToString());
-                temp.RemoveAt(e.Index);
-                checkedListBoxTodayTasks.Items.RemoveAt(e.Index);
-            }
-            catch
-            {
-
-            }
+            buttonRemoveTask.Enabled = true;
             
         }
+
+        
 
 
         private void AllTasksToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
-            checkedListBoxTodayTasks = new CheckedListBox();
-            checkedListBoxTodayTasks.CheckOnClick = true;
-            Font fn = new Font("Georgia", 12);
-            checkedListBoxTodayTasks.Font = fn;
-            checkedListBoxTodayTasks.Width = 800;
-            checkedListBoxTodayTasks.Height = 800;
-            int x = 0;
-            foreach(string s in temp)
-            {
-                
-                checkedListBoxTodayTasks.Items.Add(s);
-                checkedListBoxTodayTasks.SetItemChecked(x, false);
-                x++;
-            }
-           
-            panel1.Controls.Add(checkedListBoxTodayTasks);
-            checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
-            
+            TodayAndTomorrowAndAll(-1);
+            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
+
         }
 
         private void TomorrowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TodayAndTomorrow(1);
-            checkedListBoxTodayTasks.ItemCheck += CheckedListBoxTodayTasks_ItemCheck;
+            TodayAndTomorrowAndAll(1);
+            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
 
         }
 
@@ -208,19 +206,20 @@ namespace uCAN
 
         private void DeadlinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RichTextBox f = new RichTextBox();
-            f.Height = 600;
-            f.Width = 600;
-            Font fn = new Font("Georgia", 12);
-            f.Font = fn;
-            f.ReadOnly = true;
+            buttonRemoveTask.Visible = false;
             panel1.Controls.Clear();
+            ListBox listBoxTasks = new ListBox();
+            listBoxTasks.BackColor = Color.WhiteSmoke;
+            listBoxTasks.Height = 386;
+            listBoxTasks.Width = 629;
+            Font fn = new Font("Georgia", 12);
+            listBoxTasks.Font = fn;
+           
             foreach(string s in temp)
             {
                 
                 string[] ss = s.Split();
-                string  numbers = ss[ss.Length - 1];
-                
+                string numbers = ss[ss.Length - 1];
                 string[] date = numbers.Split('.');
                 int day = Convert.ToInt32(date[0]);
                 int month = Convert.ToInt32(date[1]);
@@ -228,24 +227,32 @@ namespace uCAN
                 DateTime finishDate = new DateTime(year,month,day);
                 TimeSpan left = finishDate.Subtract(DateTime.Now);
                 double daysLeft = left.TotalDays;
-                Label labl1 = new Label();
-                labl1.Height = 100;
-                labl1.Width = 200;
+               
                 if(daysLeft+1>=0)
                 {
-                    f.Text += s.Remove(s.Length - 21) + ". Осталось - " + (daysLeft + 1).ToString("0") + " day(-s)" + Environment.NewLine;
+                    listBoxTasks.Items.Add(s.Remove(s.Length - 21) + " - " + (daysLeft + 1).ToString("0") + " day(-s)");
                 }
                 else
                 {
-                    f.Text += s.Remove(s.Length - 21) + ". Просрочено на " + (-1*(daysLeft + 1)).ToString("0") + " day(-s)" + Environment.NewLine;
+                    listBoxTasks.Items.Add(s.Remove(s.Length - 21) + ". Просрочено на " + (-1 * (daysLeft + 1)).ToString("0") + " day(-s)");
                 }
-                panel1.Controls.Add(f);
+                
 
             }
-           
+            panel1.Controls.Add(listBoxTasks);
+
         }
 
-       
+        private void buttonRemoveTask_Click(object sender, EventArgs e)
+        {
+            int index = listBoxTasks.SelectedIndex;
+            temp.RemoveAt(index);
+            listBoxTasks.Items.RemoveAt(index);
+            buttonRemoveTask.Enabled = false;
+            
+            
+
+        }
     }
     
 }
