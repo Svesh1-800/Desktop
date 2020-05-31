@@ -162,7 +162,6 @@ namespace uCAN
         {
             TodayAndTomorrowAndAll(0);
             listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
-            
 
         }
 
@@ -214,7 +213,6 @@ namespace uCAN
             listBoxTasks.Width = 629;
             Font fn = new Font("Georgia", 12);
             listBoxTasks.Font = fn;
-           
             foreach(string s in temp)
             {
                 
@@ -236,7 +234,6 @@ namespace uCAN
                 {
                     listBoxTasks.Items.Add(s.Remove(s.Length - 21) + ". Просрочено на " + (-1 * (daysLeft + 1)).ToString("0") + " day(-s)");
                 }
-                
 
             }
             panel1.Controls.Add(listBoxTasks);
@@ -249,8 +246,6 @@ namespace uCAN
             temp.RemoveAt(index);
             listBoxTasks.Items.RemoveAt(index);
             buttonRemoveTask.Enabled = false;
-            
-            
 
         }
     }
