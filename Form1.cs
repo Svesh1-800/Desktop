@@ -21,14 +21,11 @@ namespace uCAN
         ListBox listBoxTasks;
         List<string> temp = new List<string>();
         List<string> tempWithoutDate = new List<string>();
-      
-
 
         public FormMain()
         { 
             InitializeComponent();
             CreateTemp();
-            
             EventArgs e = new EventArgs();
             object sender = new object();
             TodayToolStripMenuItem_Click(sender, e);
@@ -111,6 +108,7 @@ namespace uCAN
         {
             TodayAndTomorrowAndAll(0);
             listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
+            
             
         }
 
@@ -208,8 +206,6 @@ namespace uCAN
             MessageBox.Show("«Но когда у тебя что-то не получается , ты начинаешь искать виноватых. Например, мою тень. Я скажу тебе то, что ты и так знаешь. Мир не такой уж солнечный и приветливый. Это суровое и опасное место. И не важно, насколько сильным ты считаешь себя, он все равно поставит тебя на колени и будет удерживать, если ты ему это позволишь Дело не в том, как сильно ты бьешь, а в том, как долго сможешь держать удары и двигаться вперед.Только так побеждают Если знаешь, чего ты стоишь, иди и возьми свое.Но будь готов принимать удары, а не говорить, что у меня не получилось из - за него, из - за нее или кого - то еще.Так делают только трусы.Но ты не трус.Быть этого не может—  Артур Дзадзаев");
         }
 
-      
-
         private void DeadlinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -247,7 +243,26 @@ namespace uCAN
             panel1.Controls.Add(listBoxTasks);
 
         }
-       
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int indexForm = listBoxTasks.SelectedIndex;
+                string el = listBoxTasks.Items[indexForm].ToString();
+                int index = tempWithoutDate.IndexOf(el);
+                tempWithoutDate.Remove(el);
+                temp.RemoveAt(index);
+                listBoxTasks.Items.RemoveAt(indexForm);
+            }
+            catch
+            {
+                MessageBox.Show("Cначала выберите задачу из списка");
+            }
+                buttonDelete.Enabled = false;
+            
+
+        }
+
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             StreamWriter file = new StreamWriter("goals.txt");
@@ -260,17 +275,6 @@ namespace uCAN
             
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            int indexForm = listBoxTasks.SelectedIndex;
-            string el = listBoxTasks.Items[indexForm].ToString();
-            int index = tempWithoutDate.IndexOf(el);
-            tempWithoutDate.Remove(el);
-            temp.RemoveAt(index);
-            listBoxTasks.Items.RemoveAt(indexForm);
-            
-
-        }
     }
     
 }

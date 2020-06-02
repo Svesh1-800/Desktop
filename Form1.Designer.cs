@@ -148,11 +148,11 @@
             this.buttonDelete.BackColor = System.Drawing.Color.LightGray;
             this.buttonDelete.Enabled = false;
             this.buttonDelete.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDelete.Location = new System.Drawing.Point(538, 401);
+            this.buttonDelete.Location = new System.Drawing.Point(402, 410);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(163, 28);
+            this.buttonDelete.Size = new System.Drawing.Size(170, 28);
             this.buttonDelete.TabIndex = 6;
-            this.buttonDelete.Text = "Удалить Задачу";
+            this.buttonDelete.Text = "Завершить  Задачу";
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
