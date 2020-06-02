@@ -38,7 +38,7 @@
             this.DeadlinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonRemoveTask = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             this.menuSideBar.SuspendLayout();
             this.SuspendLayout();
@@ -137,25 +137,24 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Location = new System.Drawing.Point(171, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(631, 386);
             this.panel1.TabIndex = 4;
             // 
-            // buttonRemoveTask
+            // buttonDelete
             // 
-            this.buttonRemoveTask.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.buttonRemoveTask.Enabled = false;
-            this.buttonRemoveTask.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonRemoveTask.Location = new System.Drawing.Point(174, 401);
-            this.buttonRemoveTask.Name = "buttonRemoveTask";
-            this.buttonRemoveTask.Size = new System.Drawing.Size(163, 28);
-            this.buttonRemoveTask.TabIndex = 5;
-            this.buttonRemoveTask.Text = "Завершить задачу";
-            this.buttonRemoveTask.UseVisualStyleBackColor = false;
-            this.buttonRemoveTask.Click += new System.EventHandler(this.buttonRemoveTask_Click);
+            this.buttonDelete.BackColor = System.Drawing.Color.LightGray;
+            this.buttonDelete.Enabled = false;
+            this.buttonDelete.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonDelete.Location = new System.Drawing.Point(538, 401);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(163, 28);
+            this.buttonDelete.TabIndex = 6;
+            this.buttonDelete.Text = "Удалить Задачу";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // FormMain
             // 
@@ -163,7 +162,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonRemoveTask);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.panel1);
             this.Controls.Add(label2);
             this.Controls.Add(this.label1);
@@ -190,7 +189,7 @@
         private System.Windows.Forms.ToolStripMenuItem DeadlinesToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonRemoveTask;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 

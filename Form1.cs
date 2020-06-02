@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace uCAN
 {
     
@@ -19,24 +20,32 @@ namespace uCAN
         DateTimePicker dateTimePickerSetDeadline;
         ListBox listBoxTasks;
         List<string> temp = new List<string>();
+        List<string> tempWithoutDate = new List<string>();
+      
+
 
         public FormMain()
         { 
             InitializeComponent();
-            CreateTemp(temp);
+            CreateTemp();
+            
             EventArgs e = new EventArgs();
             object sender = new object();
             TodayToolStripMenuItem_Click(sender, e);
 
         }
-        static void CreateTemp(List<string> temp)
+       
+        private void CreateTemp()
         {
 
             StreamReader file = new StreamReader("goals.txt");
             while (!file.EndOfStream)
             {
-                string oneTask = file.ReadLine();
-                temp.Add(oneTask);
+                string note = file.ReadLine();
+                string[] oneTask = note.Split();
+                string thatDay = oneTask[oneTask.Length - 1];
+                temp.Add(note);
+                tempWithoutDate.Add(("- " + note.Remove(note.Length - 21)));
             }
             file.Close();
             
@@ -46,13 +55,14 @@ namespace uCAN
         public void TodayAndTomorrowAndAll(int plus)
         {
             
-            buttonRemoveTask.Visible = true;
-            buttonRemoveTask.Enabled = false;
+            
+            buttonDelete.Visible = true;
+            buttonDelete.Enabled = false;
             panel1.Controls.Clear();
             listBoxTasks = new ListBox();
             Font fn = new Font("Georgia", 12);
             listBoxTasks.Height = 386;
-            listBoxTasks.Width = 629;
+            listBoxTasks.Width = 631;
             listBoxTasks.Font = fn;
             if (plus != -1)
             {
@@ -75,15 +85,46 @@ namespace uCAN
                     listBoxTasks.Items.Add(("- " + note.Remove(note.Length - 21)));
                 }
             }
-            
+
             panel1.Controls.Add(listBoxTasks);
             
         }
+        private void AllTasksToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TodayAndTomorrowAndAll(-1);
+            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
+            
+        }
 
+       
 
+        private void TomorrowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TodayAndTomorrowAndAll(1);
+            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
+            
+        }
+
+        
+
+        private void TodayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TodayAndTomorrowAndAll(0);
+            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
+            
+        }
+
+        
+
+        private void ListBoxTasks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            buttonDelete.Enabled = true;
+        }
         private void CreateTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            buttonRemoveTask.Visible = false;
+            
+            buttonDelete.Visible = false;
             panel1.Controls.Clear();
             textBoxInput = new TextBox();
 
@@ -138,12 +179,6 @@ namespace uCAN
                 ButtonOnClick(sender, e);
             }
         }
-
-        static void CreateNote(string vvod,string date,List<string> temp)
-        {
-            temp.Add(vvod + " .Дедлайн - " + date);
-            MessageBox.Show("Готово");
-        }
         public void ButtonOnClick(object sender, EventArgs eventArgs)
         {
             if (textBoxInput.Text == "")
@@ -152,60 +187,33 @@ namespace uCAN
             }
             else
             {
-                CreateNote(textBoxInput.Text, dateTimePickerSetDeadline.Value.ToShortDateString().ToString(),temp);
+                CreateNote(textBoxInput.Text, dateTimePickerSetDeadline.Value.ToShortDateString().ToString(), temp);
                 textBoxInput.Clear();
-                
+
             }
         }
+        private void CreateNote(string vvod,string date,List<string> temp)
+        {
+            string note = vvod + " .Дедлайн - " + date;
+            temp.Add(note);
+            tempWithoutDate.Add(("- " + note.Remove(note.Length - 21)));
+            MessageBox.Show("Готово");
+        }
+       
      
-        private void TodayToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TodayAndTomorrowAndAll(0);
-            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
 
-        }
-
-        private void ListBoxTasks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            buttonRemoveTask.Enabled = true;
-            
-        }
-
-        
-
-
-        private void AllTasksToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            TodayAndTomorrowAndAll(-1);
-            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
-
-        }
-
-        private void TomorrowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TodayAndTomorrowAndAll(1);
-            listBoxTasks.SelectedIndexChanged += ListBoxTasks_SelectedIndexChanged;
-
-        }
 
         private void IAmTiredToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("«Но когда у тебя что-то не получается , ты начинаешь искать виноватых. Например, мою тень. Я скажу тебе то, что ты и так знаешь. Мир не такой уж солнечный и приветливый. Это суровое и опасное место. И не важно, насколько сильным ты считаешь себя, он все равно поставит тебя на колени и будет удерживать, если ты ему это позволишь Дело не в том, как сильно ты бьешь, а в том, как долго сможешь держать удары и двигаться вперед.Только так побеждают Если знаешь, чего ты стоишь, иди и возьми свое.Но будь готов принимать удары, а не говорить, что у меня не получилось из - за него, из - за нее или кого - то еще.Так делают только трусы.Но ты не трус.Быть этого не может—  Артур Дзадзаев");
         }
 
-        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            StreamWriter file = new StreamWriter("goals.txt");
-            foreach(string note in temp)
-            {
-                file.WriteLine(note);
-            }
-            file.Close();
-        }
+      
 
         private void DeadlinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            buttonRemoveTask.Visible = false;
+            
+            buttonDelete.Visible = false;
             panel1.Controls.Clear();
             ListBox listBoxTasks = new ListBox();
             listBoxTasks.BackColor = Color.WhiteSmoke;
@@ -228,7 +236,7 @@ namespace uCAN
                
                 if(daysLeft+1>=0)
                 {
-                    listBoxTasks.Items.Add(s.Remove(s.Length - 21) + " - " + (daysLeft + 1).ToString("0") + " day(-s)");
+                    listBoxTasks.Items.Add(s.Remove(s.Length - 21) + " - " + (daysLeft).ToString("0") + " day(-s)");
                 }
                 else
                 {
@@ -239,13 +247,28 @@ namespace uCAN
             panel1.Controls.Add(listBoxTasks);
 
         }
-
-        private void buttonRemoveTask_Click(object sender, EventArgs e)
+       
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            int index = listBoxTasks.SelectedIndex;
+            StreamWriter file = new StreamWriter("goals.txt");
+            foreach (string note in temp)
+            {
+                file.WriteLine(note);
+            }
+           
+            file.Close();
+            
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            int indexForm = listBoxTasks.SelectedIndex;
+            string el = listBoxTasks.Items[indexForm].ToString();
+            int index = tempWithoutDate.IndexOf(el);
+            tempWithoutDate.Remove(el);
             temp.RemoveAt(index);
-            listBoxTasks.Items.RemoveAt(index);
-            buttonRemoveTask.Enabled = false;
+            listBoxTasks.Items.RemoveAt(indexForm);
+            
 
         }
     }
