@@ -232,7 +232,7 @@ namespace uCAN
                
                 if(daysLeft+1>=0)
                 {
-                    listBoxTasks.Items.Add(s.Remove(s.Length - 21) + " - " + (daysLeft).ToString("0") + " day(-s)");
+                    listBoxTasks.Items.Add(s.Remove(s.Length - 21) + " - " + (daysLeft+1).ToString("0") + " day(-s)");
                 }
                 else
                 {
